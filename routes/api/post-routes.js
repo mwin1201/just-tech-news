@@ -25,7 +25,7 @@ router.get('/:id', (req, res) => {
             id: req.params.id
         },
         attributes: ['id', 'post_url', 'title', 'created_at'],
-        order: [['created_at', 'DESC']];
+        order: [['created_at', 'DESC']],
         include: [
             {
                 model: User,
