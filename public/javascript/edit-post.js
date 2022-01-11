@@ -1,10 +1,10 @@
-async function upvoteClickHandler(event) {
+async function editFormHandler(event) {
     event.preventDefault();
   
-    const response = await fetch('/api/posts/upvote', {
+    const response = await fetch(`/api/posts/${id}`, {
         method: 'put',
         body: JSON.stringify({
-            post_id: id
+            title
         }),
         headers: {
             'Content-type': 'application/json'
@@ -12,11 +12,11 @@ async function upvoteClickHandler(event) {
     });
 
     if (response.ok) {
-        document.location.reload();
+        document.location.replace('/dashboard');
     }
     else {
         alert(response.statusText);
     }
 };
   
-document.querySelector('.upvote-btn').addEventListener('click', upvoteClickHandler);
+document.querySelector('.edit-post-form').addEventListener('submit', editFormHandler);
